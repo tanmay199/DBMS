@@ -2,6 +2,8 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 
+const db= require('./services/database.js');
+
 // Create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
@@ -11,7 +13,7 @@ app.get('/', function (req, res) {
 })
 
 app.get('/hello', function (req, res) {
-    res.end("tanmay");
+    res.end(db.getalltrain());
  })
 app.post('/process_post', urlencodedParser, function (req, res) {
    // Prepare output in JSON format
